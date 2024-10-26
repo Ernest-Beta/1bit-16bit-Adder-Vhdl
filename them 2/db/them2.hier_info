@@ -1,0 +1,992 @@
+|them2
+OPcode[0] => Mux0.IN10
+OPcode[0] => ALU_Control:slice.opcode[0]
+OPcode[1] => Mux0.IN9
+OPcode[1] => ALU_Control:slice.opcode[1]
+OPcode[2] => Mux0.IN8
+OPcode[2] => ALU_Control:slice.opcode[2]
+a[0] => them1:slice0.A
+a[1] => them1:slice1.A
+a[2] => them1:slice2.A
+a[3] => them1:slice3.A
+a[4] => them1:slice4.A
+a[5] => them1:slice5.A
+a[6] => them1:slice6.A
+a[7] => them1:slice7.A
+a[8] => them1:slice8.A
+a[9] => them1:slice9.A
+a[10] => them1:slice10.A
+a[11] => them1:slice11.A
+a[12] => them1:slice12.A
+a[13] => them1:slice13.A
+a[14] => them1:slice14.A
+a[15] => them1:slice15.A
+b[0] => them1:slice0.B
+b[1] => them1:slice1.B
+b[2] => them1:slice2.B
+b[3] => them1:slice3.B
+b[4] => them1:slice4.B
+b[5] => them1:slice5.B
+b[6] => them1:slice6.B
+b[7] => them1:slice7.B
+b[8] => them1:slice8.B
+b[9] => them1:slice9.B
+b[10] => them1:slice10.B
+b[11] => them1:slice11.B
+b[12] => them1:slice12.B
+b[13] => them1:slice13.B
+b[14] => them1:slice14.B
+b[15] => them1:slice15.B
+result[0] <= them1:slice0.Result
+result[1] <= them1:slice1.Result
+result[2] <= them1:slice2.Result
+result[3] <= them1:slice3.Result
+result[4] <= them1:slice4.Result
+result[5] <= them1:slice5.Result
+result[6] <= them1:slice6.Result
+result[7] <= them1:slice7.Result
+result[8] <= them1:slice8.Result
+result[9] <= them1:slice9.Result
+result[10] <= them1:slice10.Result
+result[11] <= them1:slice11.Result
+result[12] <= them1:slice12.Result
+result[13] <= them1:slice13.Result
+result[14] <= them1:slice14.Result
+result[15] <= them1:slice15.Result
+overflow <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|ALU_Control:slice
+opcode[0] => Mux1.IN10
+opcode[0] => Mux2.IN10
+opcode[0] => Mux3.IN10
+opcode[0] => Mux4.IN10
+opcode[1] => Mux0.IN5
+opcode[1] => Mux1.IN9
+opcode[1] => Mux2.IN9
+opcode[1] => Mux3.IN9
+opcode[1] => Mux4.IN9
+opcode[2] => Mux0.IN4
+opcode[2] => Mux1.IN8
+opcode[2] => Mux2.IN8
+opcode[2] => Mux3.IN8
+opcode[2] => Mux4.IN8
+Ainvert <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+Binvert <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+CarryIn <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Operation[0] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Operation[1] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice0|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice0|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice1|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice1|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice2|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice2|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice3|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice3|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice4|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice4|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice5|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice5|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice6|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice6|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice7|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice7|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice8|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice8|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice9|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice9|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice10|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice10|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice11|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice11|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice12|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice12|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice13|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice13|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice14|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice14|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15
+A => Inverse_x:U0.X
+A => Inverse_x:U0.Y
+B => Inverse_x:U1.X
+B => Inverse_x:U1.Y
+Ainvert => Inverse_x:U0.INV
+Binvert => Inverse_x:U1.INV
+CarryIn => FULL_ADDER:U5.CarryIn
+Operation[0] => Mux0.IN1
+Operation[1] => Mux0.IN0
+Result <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= FULL_ADDER:U5.CarryOut
+
+
+|them2|them1:slice15|Inverse_x:U0
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15|Inverse_x:U1
+X => Result.DATAB
+Y => Result.DATAA
+INV => Result.OUTPUTSELECT
+Result <= Result.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15|AND_GATE:U2
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15|OR_GATE:U3
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15|XOR_GATE:U4
+A => Z.IN0
+B => Z.IN1
+Z <= Z.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|them2|them1:slice15|FULL_ADDER:U5
+A => Sum.IN0
+A => CarryOut.IN0
+B => Sum.IN1
+B => CarryOut.IN1
+CarryIn => Sum.IN1
+CarryIn => CarryOut.IN1
+Sum <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+CarryOut <= CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+

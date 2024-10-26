@@ -1,0 +1,45 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Result",
+					"strict" : false
+				},
+				{
+					"name" : "CarryOut",
+					"strict" : false
+				},
+				{
+					"name" : "A",
+					"strict" : false
+				},
+				{
+					"name" : "Ainvert",
+					"strict" : false
+				},
+				{
+					"name" : "Operation[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Operation[1]",
+					"strict" : false
+				},
+				{
+					"name" : "CarryIn",
+					"strict" : false
+				},
+				{
+					"name" : "B",
+					"strict" : false
+				},
+				{
+					"name" : "Binvert",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
